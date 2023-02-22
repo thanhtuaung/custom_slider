@@ -85,7 +85,7 @@ class SSSlider<T> extends StatelessWidget {
               data: SliderThemeData(
                 tickMarkShape: TextShape(
                   textList: itemList.map((e) => itemAsString(e)).toList(),
-                  textColor: labelTextColor,
+                  textColor: labelTextColor ?? Colors.black,
                 ),
                 // trackShape: RoundedRectSliderTrackShape(),
                 overlayShape: SliderComponentShape.noThumb,
