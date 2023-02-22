@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -25,38 +26,89 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Custom Slider'),
+        title: Text("Custom Slider"),
       ),
-      body: Center(
-        child: SSSlider(
-          itemList: const ['3 mins', '15 mins', '1 hour', '24 hours', 'Never'],
-          // itemList: const ['1', '2', '3', '4', '5', '6'],
-          initialValue: "15 mins",
-          uniqueValue: (item) => item,
-          itemAsString: (item) => item.toString(),
-          valueChanged: (item) => print(
-            item.toString(),
-          ),
-          // activeColor: Colors.red,
-          activeTrickMarkColor: Colors.black,
-          inActiveTrickMarkColor: Colors.red,
-          inActiveTrackColor: Colors.green,
-          activeTrackColor: Colors.red,
-          trickMarkShape: TrickMarkShapes.diamond,
+      body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Spacer(),
+            SSCustomSlider<String>(
+              itemList: const ['1', '2', '3', '4', '5'],
+              // itemList: const ['1', '2', '3', '4', '5', '6'],
+              initialValue: "15 mins",
+              uniqueValue: (item) => item,
+              itemAsString: (item) => item.toString(),
+              valueChanged: (item) => print(
+                item.toString(),
+              ),
+              // activeColor: Colors.red,
+              activeTrickMarkColor: Colors.red,
+              inActiveTrickMarkColor: Colors.red,
+              activeTrackColor: Colors.red,
+              trickMarkSize: 5,
+              trickMarkShape: TrickMarkShapes.circle,
+              // inActiveColor: Colors.red,
+            ),
+            const Spacer(),
+            SSCustomSlider<String>(
+              itemList: const ['Jan', 'Feb', 'March', 'April', 'May'],
+              // itemList: const ['1', '2', '3', '4', '5', '6'],
+              initialValue: "15 mins",
+              uniqueValue: (item) => item,
+              itemAsString: (item) => item.toString(),
+              valueChanged: (item) => print(
+                item.toString(),
+              ),
+              // activeColor: Colors.red,
+              activeTrickMarkColor: Colors.red,
+              inActiveTrickMarkColor: Colors.red,
+              activeTrackColor: Colors.red,
+              trickMarkSize: 7,
+              trickMarkShape: TrickMarkShapes.diamond,
+              // inActiveColor: Colors.red,
+            ),
+            const Spacer(),
+            SSCustomSlider<String>(
+              itemList: const ['1', '2', '3 mins', '4 hours', '24 hours'],
+              // itemList: const ['1', '2', '3', '4', '5', '6'],
+              initialValue: "15 mins",
+              uniqueValue: (item) => item,
+              itemAsString: (item) => item.toString(),
+              valueChanged: (item) => print(
+                item.toString(),
+              ),
+              // activeColor: Colors.red,
+              activeTrickMarkColor: Colors.red,
+              inActiveTrickMarkColor: Colors.red,
+              activeTrackColor: Colors.red,
+              trickMarkShape: TrickMarkShapes.square,
+              // inActiveColor: Colors.red,
+            ),
+            const Spacer(),
+          ],
         ),
-      ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

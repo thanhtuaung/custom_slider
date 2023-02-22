@@ -1,6 +1,8 @@
+// ignore_for_file: must_be_immutable
+
 part of custom_slider;
 
-class SSSlider<T> extends StatelessWidget {
+class SSCustomSlider<T> extends StatelessWidget {
   final List<T> itemList;
   T? initialValue;
   final void Function(T) valueChanged;
@@ -17,7 +19,7 @@ class SSSlider<T> extends StatelessWidget {
   double? trickMarkSize;
   final TrickMarkShapes trickMarkShape;
 
-  SSSlider({
+  SSCustomSlider({
     Key? key,
     required this.itemList,
     required this.valueChanged,
