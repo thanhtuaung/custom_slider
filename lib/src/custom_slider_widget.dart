@@ -6,6 +6,7 @@ class SSSlider<T> extends StatelessWidget {
   final void Function(T) valueChanged;
   final String Function(T) itemAsString;
   dynamic Function(T) uniqueValue;
+  Color? labelTextColor;
   Color? activeColor;
   Color? inActiveColor;
   Color? thumbColor;
@@ -23,6 +24,7 @@ class SSSlider<T> extends StatelessWidget {
     required this.itemAsString,
     required this.uniqueValue,
     TrickMarkShapes? trickMarkShape,
+    this.labelTextColor,
     this.initialValue,
     this.activeColor,
     this.inActiveColor,
@@ -41,7 +43,7 @@ class SSSlider<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -77,6 +79,7 @@ class SSSlider<T> extends StatelessWidget {
               data: SliderThemeData(
                 tickMarkShape: TextShape(
                   textList: itemList.map((e) => itemAsString(e)).toList(),
+                   textColor: labelTextColor,
                 ),
                 // trackShape: RoundedRectSliderTrackShape(),
                 overlayShape: SliderComponentShape.noThumb,
@@ -102,7 +105,6 @@ class SSSlider<T> extends StatelessWidget {
               ),
             ),
           ),
-          Text('Hellooooo'),
         ],
       ),
     );

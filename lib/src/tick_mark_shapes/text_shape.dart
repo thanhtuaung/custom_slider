@@ -3,9 +3,11 @@ part of custom_slider;
 class TextShape extends SliderTickMarkShape {
   /// Side should less than 20
   final List<String> textList;
+  Color? textColor;
 
   TextShape({
     required this.textList,
+    this.textColor,
   });
   int i = 0;
 
@@ -37,7 +39,7 @@ class TextShape extends SliderTickMarkShape {
 
 
     final textStyle = TextStyle(
-      color: Colors.black,
+      color: textColor,
       fontSize: 15,
       overflow: TextOverflow.ellipsis,
     );
