@@ -42,6 +42,12 @@ class SSSlider<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (initialValue != null) {
+      int index = itemList.indexWhere(
+          (element) => uniqueValue(element) == uniqueValue(initialValue!));
+      if (index > -1) value = index.toDouble();
+    }
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Column(
@@ -79,7 +85,7 @@ class SSSlider<T> extends StatelessWidget {
               data: SliderThemeData(
                 tickMarkShape: TextShape(
                   textList: itemList.map((e) => itemAsString(e)).toList(),
-                   textColor: labelTextColor,
+                  textColor: labelTextColor,
                 ),
                 // trackShape: RoundedRectSliderTrackShape(),
                 overlayShape: SliderComponentShape.noThumb,
